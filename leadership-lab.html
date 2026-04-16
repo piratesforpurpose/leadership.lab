@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leadership Lab | Making Leaders Everywhere</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pink:#FF85A1; --pink-light:#FFE4EC; --pink-mid:#FFB3C6;
+  --rose:#F9607A; --lav:#C3A8F0; --lav-light:#EDE5FF;
+  --mint:#6EDABF; --mint-light:#D9F7EF;
+  --sky:#74C7F0; --sky-light:#DFF2FD;
+  --gold:#FFD166; --gold-dark:#E09500;
+  --peach:#FFBF8C; --peach-light:#FFF0E0;
+  --navy:#2D3561; --navy-mid:#3E4A8A;
+  --coral:#FF6B5B; --coral-light:#FFF0EE;
+  --green:#5BC88A; --green-light:#E8F8EE;
+  --white:#FFFFFF; --off:#FDF7FA;
+  --text:#2D2D4E; --muted:#6B6B8A;
+  --border:#EDD8E8;
+  --r:22px; --rsm:12px;
+  --sh:0 8px 32px rgba(200,100,160,.1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Quicksand',sans-serif;background:var(--off);color:var(--text);overflow-x:hidden}
+h1,h2,h3,h4,h5{font-family:'Nunito',sans-serif}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:66px;border-bottom:2px solid var(--pink-light)}
+.logo{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.2rem;color:var(--rose);cursor:pointer}
+.logo span{color:var(--lav)}
+.nav-links{display:flex;gap:.1rem}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.82rem;font-weight:700;padding:.38rem .8rem;border-radius:999px;transition:all .2s}
+.nav-links a:hover{color:var(--rose);background:var(--pink-light)}
+.nav-cta{background:var(--rose);color:#fff;font-family:'Nunito',sans-serif;font-weight:900;padding:.48rem 1.2rem;border-radius:999px;font-size:.84rem;border:none;cursor:pointer;transition:all .2s}
+.nav-cta:hover{background:var(--pink);transform:translateY(-1px)}
+
+/* WELCOME */
+.welcome{min-height:100vh;background:linear-gradient(145deg,#FFF0F5 0%,#F5EEFF 50%,#E8F7FF 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;position:relative;overflow:hidden}
+.blob{position:absolute;border-radius:50%;pointer-events:none;opacity:.14}
+.b1{width:520px;height:520px;background:var(--pink);top:-130px;right:-110px}
+.b2{width:380px;height:380px;background:var(--lav);bottom:-70px;left:-90px}
+.b3{width:210px;height:210px;background:var(--mint);bottom:110px;right:7%}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:#fff;border:2px solid var(--pink-mid);border-radius:999px;padding:.38rem 1.1rem;margin-bottom:1.5rem;font-size:.8rem;color:var(--rose);font-weight:800}
+.welcome h1{font-size:clamp(2.3rem,5.5vw,4.4rem);font-weight:900;color:var(--navy);line-height:1.1;max-width:820px;margin-bottom:1.4rem}
+.welcome h1 .hp{color:var(--rose)}
+.welcome h1 .hl{color:var(--lav)}
+.wsub{font-size:1.05rem;color:var(--muted);max-width:600px;line-height:1.8;margin-bottom:2.4rem;font-weight:600}
+.wbtns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-bottom:3rem}
+.btn-rose{background:var(--rose);color:#fff;font-family:'Nunito',sans-serif;font-weight:900;padding:.88rem 2.2rem;border-radius:999px;border:none;cursor:pointer;font-size:1rem;transition:all .2s;text-decoration:none;display:inline-block}
+.btn-rose:hover{background:var(--pink);transform:translateY(-2px)}
+.btn-outline{background:#fff;color:var(--navy);font-family:'Nunito',sans-serif;font-weight:900;padding:.88rem 2.2rem;border-radius:999px;border:2.5px solid var(--lav);cursor:pointer;font-size:1rem;transition:all .2s;text-decoration:none;display:inline-block}
+.btn-outline:hover{border-color:var(--rose);color:var(--rose);transform:translateY(-2px)}
+.chips{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center}
+.chip{background:#fff;border-radius:999px;padding:.45rem 1rem;border:2px solid var(--pink-light);display:flex;align-items:center;gap:.45rem;font-size:.83rem;font-weight:700;color:var(--navy)}
+.cdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+
+/* SHARED */
+section{padding:5rem 2rem}
+.con{max-width:1100px;margin:0 auto}
+.slbl{font-size:.74rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--rose);margin-bottom:.65rem;display:flex;align-items:center;gap:.5rem}
+.slbl::before{content:'';display:inline-block;width:16px;height:3px;border-radius:999px;background:var(--pink-mid)}
+.stitle{font-size:clamp(1.7rem,3.5vw,2.6rem);font-weight:900;color:var(--navy);line-height:1.2;margin-bottom:.9rem}
+.ssub{font-size:.98rem;color:var(--muted);line-height:1.8;max-width:640px;font-weight:600}
+
+/* ABOUT */
+.about-sec{background:#fff}
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.acards{display:flex;flex-direction:column;gap:1rem}
+.ac{border-radius:20px;padding:1.2rem 1.4rem;border:2.5px solid}
+.ac1{background:var(--pink-light);border-color:var(--pink-mid)}
+.ac2{background:var(--lav-light);border-color:var(--lav)}
+.ac3{background:var(--mint-light);border-color:var(--mint)}
+.ac4{background:#FFF8E0;border-color:var(--gold)}
+.ac h4{font-size:.93rem;font-weight:900;color:var(--navy);margin-bottom:.3rem}
+.ac p{font-size:.83rem;color:var(--muted);line-height:1.6;font-weight:600}
+
+/* BLI */
+.bli-sec{background:linear-gradient(135deg,var(--navy),var(--navy-mid));position:relative;overflow:hidden}
+.bli-sec .stitle{color:#fff}
+.bli-sec .ssub{color:rgba(255,255,255,.7)}
+.bli-sec .slbl{color:var(--gold)}
+.bli-sec .slbl::before{background:var(--gold)}
+.blig{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem}
+.blic{background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:var(--r);padding:1.75rem}
+.blii{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.3rem}
+.blic h4{font-size:1rem;font-weight:900;color:#fff;margin-bottom:.5rem}
+.blic p{font-size:.83rem;color:rgba(255,255,255,.62);line-height:1.65;font-weight:600}
+.mission-box{background:rgba(255,209,102,.12);border:1.5px solid rgba(255,209,102,.3);border-radius:var(--r);padding:2rem;margin-top:2rem;text-align:center}
+.mission-box .ml{font-size:.7rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem}
+.mission-box p{font-size:1rem;color:#fff;line-height:1.8;font-style:italic;max-width:700px;margin:0 auto;font-weight:600}
+
+/* TEACHER TOOLKIT */
+.teacher-sec{background:var(--off)}
+.tabs-nav{display:flex;gap:.4rem;margin-bottom:2.5rem;flex-wrap:wrap}
+.tbtn{font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:800;padding:.58rem 1.1rem;border:2.5px solid var(--border);background:#fff;border-radius:999px;cursor:pointer;color:var(--muted);transition:all .2s}
+.tbtn:hover{border-color:var(--pink-mid);color:var(--rose)}
+.tbtn.active{background:var(--rose);border-color:var(--rose);color:#fff}
+.tpane{display:none}
+.tpane.active{display:block}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:1.2rem}
+.rc{background:#fff;border-radius:var(--r);padding:1.45rem;border:2.5px solid var(--border);transition:all .22s}
+.rc:hover{border-color:var(--pink-mid);transform:translateY(-3px);box-shadow:var(--sh)}
+.rtype{font-size:.69rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.5rem}
+.rtp{color:var(--rose)} .rtv{color:#8050CC} .rtt{color:#1ABFA3} .rtr{color:var(--green)}
+.rc h4{font-size:.92rem;font-weight:900;color:var(--navy);margin-bottom:.33rem}
+.rc p{font-size:.81rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;font-weight:600}
+.rc a{font-size:.81rem;font-weight:800;color:var(--rose);text-decoration:none}
+.rc a:hover{color:var(--navy)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(262px,1fr));gap:1.2rem}
+.vc{background:#fff;border-radius:var(--r);overflow:hidden;border:2.5px solid var(--border);transition:all .22s;cursor:pointer}
+.vc:hover{transform:translateY(-3px);box-shadow:var(--sh);border-color:var(--lav)}
+.vthumb{width:100%;height:148px;background:var(--lav-light);position:relative;overflow:hidden}
+.vthumb img{width:100%;height:100%;object-fit:cover;display:block}
+.vthumb .pb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:var(--rose);display:flex;align-items:center;justify-content:center}
+.vinfo{padding:.95rem 1.15rem 1.2rem}
+.vgrade{font-size:.67rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#8050CC;margin-bottom:.28rem}
+.vinfo h4{font-size:.88rem;font-weight:900;color:var(--navy);margin-bottom:.28rem}
+.vinfo p{font-size:.77rem;color:var(--muted);font-weight:600;line-height:1.55}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(262px,1fr));gap:1.2rem}
+.tc{background:#fff;border-radius:var(--r);padding:1.45rem;border:2.5px solid var(--border);transition:all .22s}
+.tc:hover{border-color:var(--mint);transform:translateY(-3px);box-shadow:var(--sh)}
+.tic{width:44px;height:44px;border-radius:13px;background:var(--mint-light);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:.9rem}
+.tc h4{font-size:.92rem;font-weight:900;color:var(--navy);margin-bottom:.33rem}
+.tc p{font-size:.81rem;color:var(--muted);line-height:1.6;margin-bottom:.65rem;font-weight:600}
+.tc a{font-size:.81rem;font-weight:800;color:#1ABFA3;text-decoration:none}
+.tc a:hover{color:var(--navy)}
+.ctags{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.ctag{background:#fff;border:2px solid var(--border);color:var(--muted);font-size:.73rem;font-weight:800;padding:.28rem .8rem;border-radius:999px;cursor:pointer;transition:all .2s}
+.ctag.active,.ctag:hover{background:var(--lav-light);border-color:var(--lav);color:var(--navy-mid)}
+
+/* STUDENT ZONE */
+.student-sec{background:linear-gradient(145deg,#FFF0F5 0%,#F0EAFF 60%,#E0F7F3 100%)}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:1.2rem;margin-top:2.4rem}
+.scard{background:#fff;border-radius:var(--r);padding:1.7rem;cursor:pointer;border:2.5px solid var(--border);transition:all .22s;text-align:center}
+.scard:hover{transform:translateY(-4px);box-shadow:var(--sh)}
+.scard:nth-child(1):hover{border-color:var(--pink-mid)}
+.scard:nth-child(2):hover{border-color:var(--lav)}
+.scard:nth-child(3):hover{border-color:var(--mint)}
+.scard:nth-child(4):hover{border-color:var(--gold)}
+.sico{font-size:2.4rem;margin-bottom:.7rem}
+.scard h4{font-size:.98rem;font-weight:900;color:var(--navy);margin-bottom:.38rem}
+.scard p{font-size:.82rem;color:var(--muted);line-height:1.6;font-weight:600;margin-bottom:.95rem}
+.sbadge{display:inline-block;font-family:'Nunito',sans-serif;font-size:.77rem;font-weight:900;padding:.28rem .95rem;border-radius:999px}
+.sb1{background:var(--pink-light);color:var(--rose)}
+.sb2{background:var(--lav-light);color:#6030B0}
+.sb3{background:var(--mint-light);color:#1A8C70}
+.sb4{background:#FFF8E0;color:#8A5500}
+
+/* STUDENT TOOLKIT */
+.stkit-sec{background:#fff}
+.tkgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:1.2rem;margin-top:2rem}
+.tk{border-radius:var(--r);padding:1.45rem;border:2.5px solid}
+.tk1{background:var(--pink-light);border-color:var(--pink-mid)}
+.tk2{background:var(--lav-light);border-color:var(--lav)}
+.tk3{background:var(--mint-light);border-color:var(--mint)}
+.tk4{background:#FFF8E0;border-color:var(--gold)}
+.tk5{background:var(--sky-light);border-color:var(--sky)}
+.tk6{background:var(--peach-light);border-color:var(--peach)}
+.tk7{background:var(--pink-light);border-color:var(--pink-mid)}
+.tk8{background:var(--lav-light);border-color:var(--lav)}
+.tk h4{font-size:.92rem;font-weight:900;color:var(--navy);margin-bottom:.33rem}
+.tk p{font-size:.81rem;color:var(--muted);line-height:1.6;font-weight:600}
+
+/* EQUITY */
+.equity-sec{background:var(--off)}
+.eqg{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-top:3rem}
+.eqstats{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.eqs{border-radius:var(--r);padding:1.35rem;text-align:center;border:2.5px solid}
+.eq1{background:var(--pink-light);border-color:var(--pink-mid)}
+.eq2{background:var(--lav-light);border-color:var(--lav)}
+.eq3{background:var(--mint-light);border-color:var(--mint)}
+.eq4{background:var(--sky-light);border-color:var(--sky)}
+.eqs .ebig{font-family:'Nunito',sans-serif;font-size:1.95rem;font-weight:900;line-height:1;margin-bottom:.42rem}
+.eq1 .ebig{color:var(--rose)} .eq2 .ebig{color:#7844C8} .eq3 .ebig{color:#1A9C7C} .eq4 .ebig{color:#1A7FAD}
+.eqs p{font-size:.78rem;color:var(--muted);line-height:1.5;font-weight:600}
+.eqtext h3{font-size:1.3rem;font-weight:900;color:var(--navy);margin-bottom:.8rem}
+.eqtext p{font-size:.87rem;color:var(--muted);line-height:1.8;margin-bottom:.9rem;font-weight:600}
+.pill{display:inline-flex;align-items:center;font-size:.75rem;font-weight:800;padding:.27rem .78rem;border-radius:999px;margin:.18rem}
+.p1{background:var(--pink-light);color:#C0305A} .p2{background:var(--lav-light);color:#5A35A0}
+.p3{background:var(--mint-light);color:#1A7060} .p4{background:var(--sky-light);color:#1460A0}
+.p5{background:#FFF8E0;color:#8A5500} .p6{background:var(--peach-light);color:#8A4800}
+
+/* CHAPTER EXPANSION */
+.chapter-sec{background:#fff}
+.chsteps{display:grid;grid-template-columns:repeat(auto-fill,minmax(192px,1fr));gap:1.2rem;margin-top:2.4rem}
+.chs{background:var(--off);border-radius:var(--r);padding:1.45rem;border:2.5px solid var(--border);transition:all .2s}
+.chs:hover{border-color:var(--pink-mid);transform:translateY(-2px)}
+.snum{width:37px;height:37px;border-radius:50%;background:var(--rose);color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:.98rem;display:flex;align-items:center;justify-content:center;margin-bottom:.95rem}
+.chs h4{font-size:.92rem;font-weight:900;color:var(--navy);margin-bottom:.33rem}
+.chs p{font-size:.8rem;color:var(--muted);line-height:1.6;font-weight:600}
+.chcta{background:linear-gradient(135deg,var(--rose),var(--lav));border-radius:var(--r);padding:2.4rem;text-align:center;margin-top:2rem}
+.chcta h3{font-size:1.45rem;font-weight:900;color:#fff;margin-bottom:.7rem}
+.chcta p{color:rgba(255,255,255,.88);font-size:.88rem;margin-bottom:1.4rem;font-weight:600}
+
+/* IMPACT */
+.impact-sec{background:var(--off)}
+.impg{display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr));gap:1.2rem;margin-top:2.4rem}
+.icard{border-radius:var(--r);padding:1.7rem;text-align:center;border:2.5px solid}
+.ic1{background:var(--pink-light);border-color:var(--pink-mid)}
+.ic2{background:var(--lav-light);border-color:var(--lav)}
+.ic3{background:var(--mint-light);border-color:var(--mint)}
+.ic4{background:#FFF8E0;border-color:var(--gold)}
+.icard .iico{font-size:1.65rem;margin-bottom:.38rem}
+.icard .inum{font-family:'Nunito',sans-serif;font-size:2.1rem;font-weight:900;line-height:1;margin-bottom:.33rem}
+.ic1 .inum{color:var(--rose)} .ic2 .inum{color:#7844C8} .ic3 .inum{color:#1A9C7C} .ic4 .inum{color:#8A5500}
+.icard .ilbl{font-size:.8rem;color:var(--muted);line-height:1.5;font-weight:700}
+.sucgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2rem}
+.sucit{background:#fff;border-radius:var(--rsm);padding:1.2rem 1.4rem;display:flex;gap:.95rem;align-items:flex-start;border:2px solid var(--border)}
+.suico{width:35px;height:35px;border-radius:11px;background:var(--pink-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.95rem}
+.sucit h4{font-size:.87rem;font-weight:900;color:var(--navy);margin-bottom:.28rem}
+.sucit p{font-size:.78rem;color:var(--muted);line-height:1.6;font-weight:600}
+
+/* FOUNDERS */
+.founders-sec{background:linear-gradient(135deg,#FFF0F5 0%,#EDE5FF 100%)}
+.fgrid{display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center;margin-top:2.4rem}
+.fcard{background:#fff;border:2.5px solid var(--border);border-radius:var(--r);padding:1.45rem;text-align:center;width:152px;transition:all .2s}
+.fcard:hover{border-color:var(--pink-mid);transform:translateY(-3px)}
+.fav{width:58px;height:58px;border-radius:50%;margin:0 auto .7rem;display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-weight:900;font-size:.98rem;color:#fff}
+.fa1{background:var(--rose)} .fa2{background:var(--lav)} .fa3{background:var(--mint)}
+.fa4{background:var(--sky)} .fa5{background:var(--gold-dark)} .fa6{background:var(--peach);color:var(--navy) !important}
+.fcard h4{font-size:.84rem;font-weight:900;color:var(--navy)}
+.fcard p{font-size:.71rem;color:var(--muted);margin-top:.18rem;font-weight:700}
+.fquote{background:#fff;border-radius:var(--r);padding:1.9rem;max-width:720px;margin:2rem auto 0;border:2.5px solid var(--pink-light);text-align:center}
+.fquote p{font-size:.98rem;color:var(--text);line-height:1.8;font-style:italic;font-weight:600}
+.fquote .attr{color:var(--rose);font-weight:900;font-style:normal;font-size:.83rem;margin-top:.7rem;display:block}
+
+/* CONTACT */
+.contact-sec{background:#fff}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.cform{background:var(--off);border-radius:var(--r);padding:1.9rem;border:2.5px solid var(--pink-light)}
+.fg{margin-bottom:1.15rem}
+.fg label{display:block;font-size:.8rem;font-weight:900;color:var(--navy);margin-bottom:.33rem}
+.fg input,.fg select,.fg textarea{width:100%;padding:.68rem .95rem;border:2px solid var(--border);border-radius:var(--rsm);font-family:'Quicksand',sans-serif;font-size:.86rem;color:var(--text);background:#fff;transition:border-color .2s;outline:none;font-weight:600}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--pink-mid)}
+.fg textarea{resize:vertical;min-height:88px}
+.ckg{display:flex;flex-direction:column;gap:.48rem}
+.cki{display:flex;align-items:flex-start;gap:.58rem;font-size:.83rem;color:var(--text);cursor:pointer;font-weight:600;line-height:1.5}
+.cki input[type=checkbox]{width:15px;height:15px;accent-color:var(--rose);margin-top:2px;flex-shrink:0}
+.fsub{width:100%;padding:.88rem;background:var(--rose);color:#fff;font-family:'Nunito',sans-serif;font-weight:900;border:none;border-radius:999px;cursor:pointer;font-size:.98rem;transition:all .2s;margin-top:.25rem}
+.fsub:hover{background:var(--pink);transform:translateY(-1px)}
+.fsuccess{display:none;text-align:center;padding:2.4rem 1rem}
+.fsuccess .bigcheck{font-size:3.5rem;margin-bottom:.9rem}
+.fsuccess h3{font-size:1.2rem;font-weight:900;color:var(--navy);margin-bottom:.45rem}
+.fsuccess p{font-size:.87rem;color:var(--muted);font-weight:600;line-height:1.7}
+.cinfo h3{font-size:1.3rem;font-weight:900;color:var(--navy);margin-bottom:.9rem}
+.cinfo p{font-size:.87rem;color:var(--muted);line-height:1.8;margin-bottom:1.15rem;font-weight:600}
+.cbenefit{display:flex;gap:.72rem;align-items:flex-start;margin-bottom:.82rem}
+.cbico{width:35px;height:35px;border-radius:11px;background:var(--pink-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.95rem}
+.cbenefit h5{font-size:.87rem;font-weight:900;color:var(--navy);margin-bottom:.1rem}
+.cbenefit p{font-size:.78rem;color:var(--muted);margin:0;line-height:1.55;font-weight:600}
+.affil-box{margin-top:1.4rem;background:linear-gradient(135deg,var(--pink-light),var(--lav-light));border-radius:var(--rsm);padding:1.2rem;font-size:.83rem;color:var(--muted);border:2px solid var(--pink-mid);font-weight:700}
+
+/* FOOTER */
+footer{background:var(--navy);color:rgba(255,255,255,.62);padding:3rem 2rem;text-align:center}
+.flogo{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.18rem;color:var(--pink);margin-bottom:.45rem}
+.flogo span{color:var(--lav)}
+.flinks{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;margin:.9rem 0}
+.flinks a{color:rgba(255,255,255,.48);text-decoration:none;font-size:.79rem;transition:color .2s;font-weight:700}
+.flinks a:hover{color:var(--pink)}
+footer p{font-size:.8rem;line-height:1.7;max-width:540px;margin:0 auto;font-weight:600}
+
+/* MODALS */
+.overlay{display:none;position:fixed;inset:0;z-index:300;background:rgba(45,35,80,.65);align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px)}
+.overlay.open{display:flex}
+.mbox{background:#fff;border-radius:var(--r);max-width:570px;width:100%;padding:1.9rem;max-height:92vh;overflow-y:auto;border:3px solid var(--pink-light)}
+.mhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.4rem}
+.mhead h3{font-size:1.2rem;font-weight:900;color:var(--navy)}
+.mclose{background:var(--pink-light);border:none;width:32px;height:32px;border-radius:50%;font-size:1rem;cursor:pointer;color:var(--rose);font-weight:900}
+
+/* QUIZ */
+.qdots{display:flex;gap:.38rem;margin-bottom:1.4rem}
+.qdot{flex:1;height:6px;border-radius:999px;background:var(--border)}
+.qdot.done{background:var(--mint)} .qdot.curr{background:var(--rose)}
+.qq{font-size:.98rem;font-weight:700;color:var(--text);margin-bottom:1.15rem;line-height:1.6}
+.qopts{display:grid;grid-template-columns:1fr 1fr;gap:.68rem}
+.qopt{padding:.82rem .95rem;border-radius:var(--rsm);border:2.5px solid var(--border);font-size:.86rem;font-weight:700;cursor:pointer;background:var(--off);transition:all .2s;color:var(--text);font-family:'Quicksand',sans-serif}
+.qopt:hover{border-color:var(--pink-mid);background:var(--pink-light)}
+.qopt.correct{border-color:var(--green);background:var(--green-light);color:#1A6040}
+.qopt.wrong{border-color:var(--coral);background:var(--coral-light);color:#8C2020}
+.qfb{margin-top:.95rem;padding:.82rem .95rem;border-radius:var(--rsm);font-size:.86rem;font-weight:700;display:none;line-height:1.55}
+.qfb.show{display:block}
+.qfb.correct{background:var(--green-light);color:#1A6040;border:2px solid var(--green)}
+.qfb.wrong{background:var(--coral-light);color:#8C2020;border:2px solid var(--coral)}
+.qnext{margin-top:1.2rem;width:100%;padding:.82rem;background:var(--rose);color:#fff;font-family:'Nunito',sans-serif;font-weight:900;border:none;border-radius:999px;cursor:pointer;font-size:.98rem;transition:all .2s}
+.qnext:hover{background:var(--pink)}
+.qscore{text-align:center;padding:1.4rem 0}
+.qscore .bsc{font-family:'Nunito',sans-serif;font-size:2.9rem;font-weight:900;color:var(--navy)}
+.qstars{font-size:1.9rem;margin-bottom:.45rem}
+
+/* COLOR QUIZ */
+.cprog{height:6px;background:var(--border);border-radius:999px;margin-bottom:1.4rem;overflow:hidden}
+.cbar{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--pink),var(--lav));transition:width .4s}
+.cqnum{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.45rem}
+.cqq{font-size:.98rem;font-weight:700;color:var(--text);margin-bottom:1.15rem;line-height:1.6}
+.copts{display:grid;grid-template-columns:1fr 1fr;gap:.68rem}
+.copt{padding:.95rem;border-radius:var(--rsm);cursor:pointer;font-size:.86rem;font-weight:700;border:2.5px solid transparent;transition:all .2s;text-align:left}
+.copt:hover{transform:scale(1.02)}
+.ob{background:#DBEEFF;color:#0C447C;border-color:#B0D4F8}
+.og{background:var(--green-light);color:#1A6040;border-color:#A0DDB8}
+.or{background:var(--pink-light);color:#C02848;border-color:var(--pink-mid)}
+.oy{background:#FFF8D8;color:#7A4800;border-color:var(--gold)}
+.cresult{text-align:center;padding:1rem 0}
+.cresult h3{font-size:1.22rem;font-weight:900;color:var(--navy);margin-bottom:.38rem}
+.cresult p{font-size:.87rem;color:var(--muted);line-height:1.7;font-weight:600}
+.remoji{font-size:3.8rem;margin-bottom:.7rem}
+
+/* BLOCK BLAST */
+.gbox{background:linear-gradient(135deg,var(--navy),var(--navy-mid));border-radius:var(--r);max-width:560px;width:100%;padding:1.45rem;max-height:94vh;overflow-y:auto;border:3px solid var(--pink)}
+.ghead{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.2rem}
+.gtitle{font-family:'Nunito',sans-serif;font-size:1.15rem;font-weight:900;color:var(--gold)}
+.gsub{font-size:.75rem;color:rgba(255,255,255,.48);margin-bottom:.9rem;font-weight:600}
+.gclose{background:rgba(255,255,255,.1);border:none;width:30px;height:30px;border-radius:50%;color:#fff;font-size:1.1rem;cursor:pointer}
+.gstats{display:flex;gap:.7rem;margin-bottom:.9rem}
+.gst{background:rgba(255,255,255,.1);border-radius:var(--rsm);padding:.45rem .9rem;text-align:center;flex:1}
+.gsl{font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.48);font-weight:700}
+.gsv{font-family:'Nunito',sans-serif;font-size:1.35rem;font-weight:900;color:var(--gold)}
+/* BLAST BOARD */
+.blast-board{position:relative;margin-bottom:.9rem;background:rgba(0,0,0,.25);border-radius:16px;padding:10px;overflow:hidden}
+.blast-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:5px}
+.gblock{aspect-ratio:1;border-radius:8px;cursor:pointer;transition:transform .12s,opacity .18s;border:1.5px solid rgba(255,255,255,.12);position:relative;display:flex;align-items:center;justify-content:center;font-size:.55rem;font-weight:800;color:rgba(255,255,255,.7)}
+.gblock.alive:hover{transform:scale(1.08);filter:brightness(1.18)}
+.gblock.selected{transform:scale(1.15);box-shadow:0 0 0 2.5px var(--gold)}
+.gblock.dead{opacity:0;pointer-events:none;transform:scale(0)}
+.gblock.popping{animation:pop .3s ease forwards}
+@keyframes pop{0%{transform:scale(1.3);opacity:1}100%{transform:scale(0);opacity:0}}
+.fall-preview{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;opacity:.35}
+.fp-block{width:28px;height:28px;border-radius:6px;border:1px solid rgba(255,255,255,.2)}
+.gqt{background:rgba(255,255,255,.09);border-radius:var(--rsm);padding:.8rem .95rem;margin-bottom:.8rem;font-size:.88rem;color:#fff;line-height:1.6;font-weight:700}
+.gang{display:grid;grid-template-columns:1fr 1fr;gap:.48rem;margin-bottom:.8rem}
+.gans{padding:.62rem .82rem;border-radius:var(--rsm);background:rgba(255,255,255,.09);color:#fff;font-size:.81rem;cursor:pointer;border:2px solid rgba(255,255,255,.12);transition:all .2s;font-weight:700;font-family:'Quicksand',sans-serif}
+.gans:hover{border-color:var(--gold);background:rgba(255,209,102,.16)}
+.gans.correct{background:rgba(91,200,138,.28);border-color:var(--green)}
+.gans.wrong{background:rgba(255,107,91,.2);border-color:var(--coral)}
+.gfb{font-size:.83rem;padding:.62rem .95rem;border-radius:var(--rsm);margin-bottom:.72rem;display:none;font-weight:700}
+.gfb.show{display:block}
+.gfb.correct{background:rgba(91,200,138,.22);color:#7FFFC4}
+.gfb.wrong{background:rgba(255,107,91,.16);color:#FFB3AA}
+.gnext{width:100%;padding:.72rem;background:var(--gold);color:var(--navy);font-family:'Nunito',sans-serif;font-weight:900;border:none;border-radius:999px;cursor:pointer;font-size:.93rem}
+.gnext:hover{background:#FFE080}
+.game-over-msg{text-align:center;padding:1.4rem 0}
+
+@media(max-width:768px){
+  .ag,.eqg,.cg,.sucgrid{grid-template-columns:1fr}
+  .blig{grid-template-columns:1fr}
+  nav{padding:0 1rem}
+  .nav-links{display:none}
+  .qopts,.gang,.copts{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo" onclick="scrollTo(0,0)">🌟 Leadership<span>Lab</span></div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#teachers">Teacher Toolkit</a>
+    <a href="#students">For Students</a>
+    <a href="#chapters">Expand</a>
+    <a href="#impact">Impact</a>
+    <a href="#contact">Join Us</a>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Involved ✨</button>
+</nav>
+
+<!-- WELCOME -->
+<section class="welcome" id="home">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="eyebrow">✨ A Buccino Leadership Institute National Initiative</div>
+  <h1>Every student deserves a<br><span class="hp">great leader</span> — including<br><span class="hl">themselves.</span></h1>
+  <p class="wsub">Leadership Lab brings free, engaging leadership education to teachers and students in underserved communities across the nation. Real skills. Real impact. Right in your classroom.</p>
+  <div class="wbtns">
+    <a href="#teachers" class="btn-rose">Explore Teacher Resources 📚</a>
+    <a href="#students" class="btn-outline">Student Zone 🎮</a>
+  </div>
+  <div class="chips">
+    <div class="chip"><div class="cdot" style="background:var(--rose)"></div>100% Free for Educators</div>
+    <div class="chip"><div class="cdot" style="background:var(--lav)"></div>Built for Marginalized Communities</div>
+    <div class="chip"><div class="cdot" style="background:var(--mint)"></div>Interactive and Fun for Students</div>
+    <div class="chip"><div class="cdot" style="background:var(--gold-dark)"></div>Curriculum-Aligned SEL Resources</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-sec" id="about">
+  <div class="con">
+    <div class="ag">
+      <div>
+        <div class="slbl">What is Leadership Lab?</div>
+        <h2 class="stitle">Leadership education that reaches every classroom</h2>
+        <p class="ssub" style="margin-bottom:1.15rem">Leadership Lab is the national, digital extension of the Buccino Leadership Institute's community service initiative. Originally designed to bring BLI student leaders into local South Orange elementary and middle schools, Leadership Lab now reaches teachers and students everywhere, especially in communities that need it most.</p>
+        <p class="ssub">Our purpose: <strong>Providing leadership training for youth in the community while bridging the gap between leaders and the next generation.</strong> We help teachers equip the next class of confident, empathetic, and purpose-driven young leaders.</p>
+      </div>
+      <div class="acards">
+        <div class="ac ac1"><h4>🎯 Curriculum-Connected</h4><p>Aligned to SEL standards so you can integrate Leadership Lab as a single lesson, a full unit, or an outclass activity without disrupting your existing curriculum.</p></div>
+        <div class="ac ac2"><h4>🌍 Built for Equity</h4><p>Designed specifically for teachers in underserved and marginalized communities. No cost, no barriers, and no sign-up wall for resources.</p></div>
+        <div class="ac ac3"><h4>🎮 Student-Centered Learning</h4><p>Interactive games, color quizzes, and hands-on activities that make leadership skills stick and actually make class fun.</p></div>
+        <div class="ac ac4"><h4>🤝 Lasting Community Impact</h4><p>When students learn to lead themselves, they lead their communities. Leadership Lab creates a ripple effect of positive change beyond the classroom.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLI -->
+<section class="bli-sec" id="bli">
+  <div class="con">
+    <div class="slbl">Our Foundation</div>
+    <h2 class="stitle">Built on the Buccino Leadership Institute</h2>
+    <p class="ssub">The Buccino Leadership Institute (BLI) at Seton Hall University is a selective program that empowers students to make meaningful community impact. Leadership Lab is how we bring that mission far beyond our campus.</p>
+    <div class="blig">
+      <div class="blic"><div class="blii" style="background:rgba(255,209,102,.15)">🏛️</div><h4>Seton Hall University</h4><p>BLI is a flagship program at Seton Hall dedicated to developing ethical, purposeful student leaders through curriculum, mentorship, and hands-on community service.</p></div>
+      <div class="blic"><div class="blii" style="background:rgba(255,133,161,.15)">💡</div><h4>Community Service Reimagined</h4><p>Leadership Lab was born from reimagining BLI's community service element, expanding from local South Orange schools to a national digital platform any teacher can access for free.</p></div>
+      <div class="blic"><div class="blii" style="background:rgba(195,168,240,.15)">🚀</div><h4>National Expansion Vision</h4><p>We invite colleges, universities, and student organizations nationwide to adopt the Leadership Lab model and create a network of leaders committed to serving the next generation.</p></div>
+    </div>
+    <div class="mission-box">
+      <div class="ml">Our Mission Statement</div>
+      <p>"Providing leadership training for youth in the community while bridging the gap between leaders and the next generation, building connections, improving teamwork, and creating lasting impact from South Orange to every corner of the nation."</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHER TOOLKIT -->
+<section class="teacher-sec" id="teachers">
+  <div class="con">
+    <div class="slbl">For Educators</div>
+    <h2 class="stitle">Your complete teacher toolkit 📚</h2>
+    <p class="ssub" style="margin-bottom:2rem">Everything you need to bring leadership education into your classroom, including presentations, printables, videos, and tools. Use one piece or the whole program. All free, always.</p>
+    <div class="tabs-nav">
+      <button class="tbtn active" onclick="switchTab('packets',this)">📋 Presentations and Packets</button>
+      <button class="tbtn" onclick="switchTab('videos',this)">🎬 Video Library</button>
+      <button class="tbtn" onclick="switchTab('exttools',this)">🛠️ Classroom Tools</button>
+      <button class="tbtn" onclick="switchTab('curriculum',this)">📚 Curriculum Connections</button>
+    </div>
+
+    <!-- PACKETS -->
+    <div id="tab-packets" class="tpane active">
+      <div class="rgrid">
+        <div class="rc"><div class="rtype rtp">📊 Presentation</div><h4>Leadership Lab Full Workshop Deck</h4><p>The complete student-facing workshop covering what leadership is, leadership styles, real-world leaders (Malala, Usain Bolt, Nikola Tesla), growth mindset, emotional intelligence, healthy disagreements, and self-reflection. Ready to present or customize.</p><a href="https://canva.link/3tuzayn81nq7md5" target="_blank">Open Presentation</a></div>
+        <div class="rc"><div class="rtype rtp">📊 Presentation</div><h4>Buccino Leadership Institute Overview Deck</h4><p>The full program overview presented to the BLI panel. Ideal for administrators or educators who want the full program context before bringing Leadership Lab to their school.</p><a href="https://docs.google.com/presentation/d/1qdNHPps0g2m0CQI0ByHegcc5-c8FS-OcRCkuY6r_-9w/edit?usp=sharing" target="_blank">Open Deck</a></div>
+        <div class="rc"><div class="rtype rtr">🖨️ Printable Activity</div><h4>Leadership Style Quiz: 4 Corners</h4><p>The interactive 4-Corners color quiz (Blue, Green, Red, Yellow leadership styles). Students move to corners to identify their style, then explore how different styles make a stronger team. Debrief guide included.</p><a href="#" onclick="openColorQuiz()">Try the Digital Version</a></div>
+        <div class="rc"><div class="rtype rtr">🖨️ Printable</div><h4>Self-Reflection Worksheet</h4><p>Post-workshop student reflection: What is leadership? What kind of leader am I? What is one thing I will implement in my life today? Perfect as an exit ticket, journal entry, or homework piece. Grades 3 to 8.</p><a href="#">Download PDF</a></div>
+        <div class="rc"><div class="rtype rtr">🖨️ Activity Guide</div><h4>Marshmallow Tower Challenge</h4><p>The classic team-building warmup that reveals natural leadership dynamics before the lesson begins. Full instructions, observation checklist, and post-activity discussion questions included for teachers.</p><a href="#">Download Guide</a></div>
+        <div class="rc"><div class="rtype rtr">🖨️ Printable Cards</div><h4>Leadership Scenarios: Challenge Cards</h4><p>Real-life leadership dilemmas including coping with stress, peer conflict, and standing up for others. Students discuss what a leader would do. Includes sample responses and facilitation tips for teachers.</p><a href="#">Download Cards</a></div>
+        <div class="rc"><div class="rtype rtp">📊 Mini-Lesson</div><h4>What Does It Mean to Be a Leader?</h4><p>A standalone 20-minute lesson covering: leadership is defined by actions not titles, the First Follower concept, examples of leaders in the everyday world, and how anyone regardless of title can lead.</p><a href="#">Download Lesson</a></div>
+        <div class="rc"><div class="rtype rtr">🖨️ Printable</div><h4>Growth Mindset and Emotional Intelligence</h4><p>A combined worksheet where students reflect on their emotional triggers, coping strategies, and how emotional intelligence helps them lead with empathy and handle healthy disagreements with peers.</p><a href="#">Download</a></div>
+      </div>
+    </div>
+
+    <!-- VIDEOS -->
+    <div id="tab-videos" class="tpane">
+      <p style="font-size:.87rem;color:var(--muted);margin-bottom:1.4rem;font-weight:600;line-height:1.7">Curated videos for classroom use. Great for introducing a concept, sparking discussion, or warming up a lesson. Click any card to open on YouTube.</p>
+      <div class="vgrid">
+        <div class="vc" onclick="window.open('https://youtu.be/uAy6EawKKME?si=RmQDh7pGzB7oCms3','_blank')">
+          <div class="vthumb"><img src="https://img.youtube.com/vi/uAy6EawKKME/hqdefault.jpg" alt="" onerror="this.style.display='none'"><div class="pb"><svg width="17" height="17" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+          <div class="vinfo"><div class="vgrade">Grades 3 to 8 · Leadership Basics</div><h4>What is Leadership?</h4><p>A great opening video for any leadership lesson. Accessible, engaging, and sparks excellent class discussion about what it really means to lead.</p></div>
+        </div>
+        <div class="vc" onclick="window.open('https://www.youtube.com/watch?v=KdL4o7wU0CQ','_blank')">
+          <div class="vthumb"><img src="https://img.youtube.com/vi/KdL4o7wU0CQ/hqdefault.jpg" alt="" onerror="this.style.display='none'"><div class="pb"><svg width="17" height="17" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+          <div class="vinfo"><div class="vgrade">Grades 3 to 7 · Growth Mindset</div><h4>Growth Mindset for Students</h4><p>Explains growth vs. fixed mindset in a student-friendly way. Pairs perfectly with the Leadership Lab growth mindset module.</p></div>
+        </div>
+        <div class="vc" onclick="window.open('https://www.youtube.com/watch?v=dtnZYe8fYN4','_blank')">
+          <div class="vthumb"><img src="https://img.youtube.com/vi/dtnZYe8fYN4/hqdefault.jpg" alt="" onerror="this.style.display='none'"><div class="pb"><svg width="17" height="17" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+          <div class="vinfo"><div class="vgrade">Grades 5 to 8 · Leadership Styles</div><h4>Different Types of Leadership</h4><p>Explores how leaders lead in different ways. A great companion for the 4-Corners color quiz activity.</p></div>
+        </div>
+        <div class="vc" onclick="window.open('https://www.youtube.com/watch?v=Vyn_xLrtZaY','_blank')">
+          <div class="vthumb"><img src="https://img.youtube.com/vi/Vyn_xLrtZaY/hqdefault.jpg" alt="" onerror="this.style.display='none'"><div class="pb"><svg width="17" height="17" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+          <div class="vinfo"><div class="vgrade">Grades 4 to 8 · Emotional Intelligence</div><h4>What is Emotional Intelligence?</h4><p>Student-friendly breakdown of EQ: self-awareness, empathy, and emotional regulation. Core to Leadership Lab's EI section.</p></div>
+        </div>
+        <div class="vc" onclick="window.open('https://www.youtube.com/watch?v=NiECScNxmDQ','_blank')">
+          <div class="vthumb"><img src="https://img.youtube.com/vi/NiECScNxmDQ/hqdefault.jpg" alt="" onerror="this.style.display='none'"><div class="pb"><svg width="17" height="17" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+          <div class="vinfo"><div class="vgrade">Grades 5 to 8 · Leaders in the World</div><h4>Malala: A Story of Courage</h4><p>Kid-friendly overview of Malala's advocacy. Ties directly to the Leaders in the Everyday World segment of the workshop.</p></div>
+        </div>
+        <div class="vc" onclick="window.open('https://www.youtube.com/watch?v=0T5A9JLZQ8E','_blank')">
+          <div class="vthumb"><img src="https://img.youtube.com/vi/0T5A9JLZQ8E/hqdefault.jpg" alt="" onerror="this.style.display='none'"><div class="pb"><svg width="17" height="17" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+          <div class="vinfo"><div class="vgrade">Grades 3 to 5 · Teamwork</div><h4>The Power of Teamwork</h4><p>Animated short on collaboration and how teams succeed when everyone contributes. Great to show before the Marshmallow Tower Challenge.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOLS -->
+    <div id="tab-exttools" class="tpane">
+      <div class="tgrid">
+        <div class="tc"><div class="tic">💬</div><h4>Padlet: Class Discussion Boards</h4><p>Anonymous student responses to leadership prompts. Great for students who want to share their leadership story without speaking up in class.</p><a href="https://padlet.com" target="_blank">Visit Padlet</a></div>
+        <div class="tc"><div class="tic">📊</div><h4>Mentimeter: Live Word Clouds</h4><p>Ask "What does a leader look like to you?" and build a live word cloud in real time. Free for educators and no student accounts needed.</p><a href="https://www.mentimeter.com" target="_blank">Visit Mentimeter</a></div>
+        <div class="tc"><div class="tic">🎮</div><h4>Kahoot! Leadership Trivia</h4><p>Host competitive leadership trivia with your class using our included question bank. Pairs with Leadership Lab concepts perfectly.</p><a href="https://kahoot.com" target="_blank">Visit Kahoot</a></div>
+        <div class="tc"><div class="tic">🎨</div><h4>Canva for Education</h4><p>Free for teachers. Students design Leadership Pledge posters or vision boards. A powerful end-of-unit project that decorates the classroom.</p><a href="https://www.canva.com/education/" target="_blank">Visit Canva Edu</a></div>
+        <div class="tc"><div class="tic">🎥</div><h4>Flip: Video Reflections</h4><p>Students record a 60-second leadership reflection: "What kind of leader am I and what will I change?" Powerful for SEL portfolios.</p><a href="https://info.flip.com" target="_blank">Visit Flip</a></div>
+        <div class="tc"><div class="tic">🌱</div><h4>Junior Achievement</h4><p>Free in-school leadership and career-readiness programming that pairs seamlessly with Leadership Lab, especially strong for Title I schools.</p><a href="https://www.juniorachievement.org" target="_blank">Visit JA</a></div>
+        <div class="tc"><div class="tic">📖</div><h4>CommonLit: Leadership Texts</h4><p>Free ELA platform with leveled readings about famous leaders. Perfect for language arts teachers who want to weave leadership into literacy.</p><a href="https://www.commonlit.org" target="_blank">Visit CommonLit</a></div>
+        <div class="tc"><div class="tic">🧩</div><h4>Breakout EDU</h4><p>Collaborative puzzle challenges requiring teamwork, communication, and problem-solving. The exact skills Leadership Lab builds.</p><a href="https://www.breakoutedu.com" target="_blank">Visit Breakout EDU</a></div>
+      </div>
+    </div>
+
+    <!-- CURRICULUM -->
+    <div id="tab-curriculum" class="tpane">
+      <p style="font-size:.87rem;color:var(--muted);margin-bottom:1.2rem;font-weight:600;line-height:1.7">Leadership Lab aligns with CASEL's Social-Emotional Learning competencies. Filter by skill area to find resources that connect to your current unit.</p>
+      <div class="ctags">
+        <div class="ctag active" onclick="filterCurr('all',this)">All Topics</div>
+        <div class="ctag" onclick="filterCurr('self',this)">Self-Awareness</div>
+        <div class="ctag" onclick="filterCurr('social',this)">Social Skills</div>
+        <div class="ctag" onclick="filterCurr('growth',this)">Growth Mindset</div>
+        <div class="ctag" onclick="filterCurr('conflict',this)">Conflict Resolution</div>
+        <div class="ctag" onclick="filterCurr('ei',this)">Emotional Intelligence</div>
+      </div>
+      <div class="rgrid" id="curr-grid">
+        <div class="rc" data-cat="self growth"><div class="rtype rtp">SEL: Self-Awareness</div><h4>Discovering Your Leadership Style</h4><p>The color quiz and 4-corners activity help students identify their natural leadership strengths. Core to CASEL's self-awareness competency. Works for grades 3 to 8.</p><a href="#" onclick="openColorQuiz()">Launch Activity</a></div>
+        <div class="rc" data-cat="social conflict"><div class="rtype rtr">SEL: Relationship Skills</div><h4>Challenge Cards: Scenarios and Conflict</h4><p>Students work through peer conflict scenarios and practice healthy disagreement. Tied to CASEL relationship skills and responsible decision-making.</p><a href="#">Get Worksheet</a></div>
+        <div class="rc" data-cat="growth"><div class="rtype rtv">SEL: Growth Mindset</div><h4>Growth Mindset Lesson Plan</h4><p>A 45-minute lesson combining video, discussion, and journaling to build a growth mindset classroom culture. Works standalone or as part of a leadership unit.</p><a href="#">Download Plan</a></div>
+        <div class="rc" data-cat="ei social"><div class="rtype rtt">SEL: Self-Management</div><h4>Emotional Intelligence Module</h4><p>A 30-minute standalone module on identifying emotions, understanding triggers, and building healthy responses. Pairs with the full Leadership Lab day or stands alone.</p><a href="#">Download Module</a></div>
+        <div class="rc" data-cat="self growth"><div class="rtype rtr">SEL: Self-Awareness</div><h4>Self-Reflection Journal Prompts</h4><p>10 structured prompts for semester-long journaling, from "What does leadership mean to me?" to "How have I grown?" Scales from elementary to middle school.</p><a href="#">Download Prompts</a></div>
+        <div class="rc" data-cat="social conflict ei"><div class="rtype rtt">SEL: Responsible Decision Making</div><h4>The First Follower: Discussion Guide</h4><p>Built around the idea that the first person to support someone else's idea is also a leader. A memorable class discussion that changes how students see leadership.</p><a href="#">Download Guide</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDENT ZONE -->
+<section class="student-sec" id="students">
+  <div class="con">
+    <div class="slbl">Student Zone</div>
+    <h2 class="stitle">Hey students, this one is for you! 🌟</h2>
+    <p class="ssub">Play games, take quizzes, and discover what kind of leader YOU are. No login needed. Just jump in!</p>
+    <div class="sgrid">
+      <div class="scard" onclick="openGame()"><div class="sico">🧱</div><h4>Leadership Block Blast</h4><p>Answer leadership questions correctly to blast colorful blocks off the board! How many can you clear?</p><div class="sbadge sb1">Play Now 🎮</div></div>
+      <div class="scard" onclick="openColorQuiz()"><div class="sico">🎨</div><h4>What Color Leader Are You?</h4><p>Take the Leadership Style Quiz and find out if you are a Blue, Green, Red, or Yellow leader!</p><div class="sbadge sb2">Take Quiz ✨</div></div>
+      <div class="scard" onclick="openLeaderQuiz()"><div class="sico">🏆</div><h4>Leadership Knowledge Quiz</h4><p>Test what you know about leadership, famous leaders, and what it really means to lead with purpose.</p><div class="sbadge sb3">Start Quiz 🌱</div></div>
+      <div class="scard" onclick="alert('Leadership journal coming soon! Ask your teacher for the printable version 📓')"><div class="sico">📓</div><h4>My Leadership Journal</h4><p>Reflect on your leadership journey with fun prompts about what you have learned and your goals.</p><div class="sbadge sb4">Coming Soon ⭐</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDENT TOOLKIT -->
+<section class="stkit-sec" id="studentkit">
+  <div class="con">
+    <div class="slbl">Student Learning Toolkit</div>
+    <h2 class="stitle">Skills every young leader needs 💪</h2>
+    <p class="ssub">These are the core ideas Leadership Lab teaches, the building blocks of becoming a great leader at any age.</p>
+    <div class="tkgrid">
+      <div class="tk tk1"><h4>🎯 What Leadership Really Means</h4><p>Leadership is not about having the loudest voice or a special title. It is about influencing others toward a shared goal, and anyone can do it. Standing up for a friend? That is leadership.</p></div>
+      <div class="tk tk2"><h4>💙 The First Follower</h4><p>The first person to support someone else's idea is also a type of leader. Being a great follower takes courage. It validates the idea and inspires everyone else to join. Do not underestimate saying "I am in."</p></div>
+      <div class="tk tk3"><h4>🧠 Growth Mindset</h4><p>Your brain grows when you challenge it. Leaders with a growth mindset believe that effort, learning from mistakes, and perseverance are the path to greatness, not just natural talent.</p></div>
+      <div class="tk tk4"><h4>💛 Emotional Intelligence</h4><p>Great leaders understand their own emotions and others' too. EQ helps you stay calm under pressure, resolve conflict, and lead with genuine empathy for the people around you.</p></div>
+      <div class="tk tk5"><h4>🪞 Self-Reflection</h4><p>The best leaders always ask: "How can I do better?" Self-reflection means looking inward at your strengths, what you learned, and what you will do differently next time.</p></div>
+      <div class="tk tk6"><h4>🤝 Responsibility and Accountability</h4><p>Leadership equals responsibility plus accountability. Real leaders own their mistakes, keep their promises, and show up for their team. No title required, just commitment.</p></div>
+      <div class="tk tk7"><h4>🌎 Leaders in the Everyday World</h4><p>Malala Yousafzai fought for education. Usain Bolt pushed the limits of human performance. Nikola Tesla revolutionized engineering. Leaders are everywhere and they come in all forms.</p></div>
+      <div class="tk tk8"><h4>💬 Healthy Disagreements</h4><p>Real leaders listen to other views, share their own respectfully, and find solutions that work for everyone. Disagreeing well is one of the most important leadership skills you can build.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUITY -->
+<section class="equity-sec" id="equity">
+  <div class="con">
+    <div class="slbl">Why This Matters</div>
+    <h2 class="stitle">The equity gap in leadership education is real</h2>
+    <p class="ssub">Students in under-resourced schools are often the last to receive leadership development, yet they stand to benefit the most. Here is what research tells us.</p>
+    <div class="eqg">
+      <div class="eqstats">
+        <div class="eqs eq1"><div class="ebig">70%</div><p>of low-income students have no access to structured leadership development at school (CASEL, 2022)</p></div>
+        <div class="eqs eq2"><div class="ebig">1 in 3</div><p>Title I schools report no dedicated SEL curriculum (National Center for Education Statistics)</p></div>
+        <div class="eqs eq3"><div class="ebig">11%</div><p>average academic improvement for students in quality SEL programming (CASEL Meta-Analysis)</p></div>
+        <div class="eqs eq4"><div class="ebig">Post-COVID</div><p>Schools nationwide report sharp declines in student communication, teamwork, and emotional regulation</p></div>
+      </div>
+      <div class="eqtext">
+        <h3>How Leadership Lab closes the gap</h3>
+        <p>We believe every student regardless of zip code, background, or school budget deserves access to the tools that build self-awareness, confidence, teamwork, and resilience.</p>
+        <p>Leadership Lab puts those tools directly in teachers' hands for free. No application, no waiting. Our materials directly address the skills post-COVID schools are working hardest to rebuild: communication, conflict resolution, anger management, and emotional regulation.</p>
+        <p style="font-weight:800;color:var(--navy);margin-bottom:.45rem">Skills we build together:</p>
+        <div>
+          <span class="pill p1">Communication</span><span class="pill p2">Teamwork</span><span class="pill p3">Growth Mindset</span><span class="pill p4">Conflict Resolution</span><span class="pill p5">Self-Reflection</span><span class="pill p6">Emotional Intelligence</span><span class="pill p1">Anger Management</span><span class="pill p2">Accountability</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER EXPANSION -->
+<section class="chapter-sec" id="chapters">
+  <div class="con">
+    <div class="slbl">University and Chapter Expansion</div>
+    <h2 class="stitle">Bring Leadership Lab to your campus 🚀</h2>
+    <p class="ssub">Leadership Lab is built to be adopted by colleges, universities, honor societies, and student leadership organizations everywhere. Any group committed to community can launch their own chapter.</p>
+    <div class="chsteps">
+      <div class="chs"><div class="snum">1</div><h4>Register Your Interest</h4><p>Fill out the contact form below and select "Start a Chapter." We will reach out within two weeks with everything you need to begin.</p></div>
+      <div class="chs"><div class="snum">2</div><h4>Receive the Starter Kit</h4><p>Get our full digital toolkit: presentations, printables, workshop guides, facilitation scripts, and training resources, all ready to use.</p></div>
+      <div class="chs"><div class="snum">3</div><h4>Partner with Local Schools</h4><p>Connect with Title I and under-resourced schools in your community using our outreach templates and introduction letters.</p></div>
+      <div class="chs"><div class="snum">4</div><h4>Launch Your First Workshop</h4><p>Deliver Leadership Lab with coaching support from BLI student leaders through virtual sessions for your student volunteer team.</p></div>
+      <div class="chs"><div class="snum">5</div><h4>Grow Your Community Impact</h4><p>Build a sustainable service program where your student leaders mentor younger students and expand to more schools each year.</p></div>
+    </div>
+    <div class="chcta">
+      <h3>Ready to make an impact nationally? ✨</h3>
+      <p>We are actively looking for university and community partners to scale this initiative. No cost to start, just a commitment to the next generation.</p>
+      <button class="btn-outline" style="background:#fff;color:var(--rose);border-color:#fff" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Apply to Start a Chapter</button>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="impact-sec" id="impact">
+  <div class="con">
+    <div class="slbl">Measuring Success</div>
+    <h2 class="stitle">How we know it is working 📊</h2>
+    <p class="ssub">Leadership Lab tracks impact at every level. Here is what research shows about SEL and leadership education, and how we measure our own success.</p>
+    <div class="impg">
+      <div class="icard ic1"><div class="iico">📈</div><div class="inum">11%</div><div class="ilbl">Average academic improvement for students in quality SEL programs (CASEL, 2023)</div></div>
+      <div class="icard ic2"><div class="iico">🧠</div><div class="inum">6x</div><div class="ilbl">Students with strong SEL skills are 6 times more likely to graduate high school on time</div></div>
+      <div class="icard ic3"><div class="iico">💼</div><div class="inum">92%</div><div class="ilbl">of employers say social-emotional skills matter as much as academic ones (Forbes, 2022)</div></div>
+      <div class="icard ic4"><div class="iico">🌍</div><div class="inum">$11</div><div class="ilbl">returned for every $1 invested in quality SEL education (RAND Corporation)</div></div>
+    </div>
+    <div style="margin-top:3rem">
+      <h3 style="font-size:1.18rem;font-weight:900;color:var(--navy);margin-bottom:1.4rem">How Leadership Lab measures our own success</h3>
+      <div class="sucgrid">
+        <div class="sucit"><div class="suico">📋</div><div><h4>Student Engagement Surveys</h4><p>Pre and post-workshop surveys measuring what students learned, their key takeaways, and what they commit to implementing in their lives going forward.</p></div></div>
+        <div class="sucit"><div class="suico" style="background:var(--lav-light)">🙋</div><div><h4>Active Participation Tracking</h4><p>We track student participation in activities and discussions. Engagement is a leading indicator of learning and long-term retention of leadership skills.</p></div></div>
+        <div class="sucit"><div class="suico" style="background:var(--mint-light)">🔄</div><div><h4>Teacher Return Rate</h4><p>A teacher returning to use our resources or requesting additional materials is one of our clearest signals that Leadership Lab is delivering genuine classroom value.</p></div></div>
+        <div class="sucit"><div class="suico" style="background:#FFF8E0">🌱</div><div><h4>Community Reach and Chapter Growth</h4><p>Every new school partnership, university chapter, and teacher signup represents more students in underserved communities gaining access to leadership education.</p></div></div>
+        <div class="sucit"><div class="suico">🏆</div><div><h4>Leadership in Action Moments</h4><p>When teachers report students using leadership skills daily, stepping up, resolving conflict peacefully, and supporting peers, that is our mission accomplished.</p></div></div>
+        <div class="sucit"><div class="suico" style="background:var(--sky-light)">📝</div><div><h4>Student Reflection Quality</h4><p>We read the self-reflection worksheets. When a 4th grader writes "I learned I can be a leader without a title," that is exactly why we built this.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDERS -->
+<section class="founders-sec" id="founders">
+  <div class="con" style="text-align:center">
+    <div class="slbl">The People Behind It</div>
+    <h2 class="stitle">Co-founded by Buccino Leadership Institute student leaders 💖</h2>
+    <p class="ssub" style="max-width:640px;margin:0 auto">Leadership Lab was created by six Buccino Leadership Institute students at Seton Hall University as part of the Six for Service project, reimagining BLI's community service from the ground up.</p>
+    <div class="fgrid">
+      <div class="fcard"><div class="fav fa1">AS</div><h4>Antonio Spano</h4><p>Co-Founder</p></div>
+      <div class="fcard"><div class="fav fa2">CY</div><h4>Chandler Young</h4><p>Co-Founder</p></div>
+      <div class="fcard"><div class="fav fa3">AF</div><h4>Angelina Farrag</h4><p>Co-Founder</p></div>
+      <div class="fcard"><div class="fav fa4">JB</div><h4>Jai Balakanagaram</h4><p>Co-Founder</p></div>
+      <div class="fcard"><div class="fav fa5">IT</div><h4>Iyana Torres</h4><p>Co-Founder</p></div>
+      <div class="fcard"><div class="fav fa6">LA</div><h4>Leslie Arriaza</h4><p>Co-Founder</p></div>
+    </div>
+    <div class="fquote">
+      <p>"We are able to lead as an example for these students to mirror. By expanding leadership education to underserved classrooms, we are not only growing BLI's reach, we are building connections, improving teamwork, and giving the next generation the tools to lead with purpose and heart."</p>
+      <span class="attr">Six for Service, Buccino Leadership Institute, Seton Hall University</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-sec" id="contact">
+  <div class="con">
+    <div class="slbl">Get Involved</div>
+    <h2 class="stitle">Join the Leadership Lab community 🌟</h2>
+    <p class="ssub" style="margin-bottom:2.4rem">Whether you are a teacher looking for resources, a university wanting to start a chapter, or someone who wants to support our mission, we would love to connect.</p>
+    <div class="cg">
+      <div class="cform">
+        <div id="cfbody">
+          <h3 style="font-size:1.08rem;font-weight:900;color:var(--navy);margin-bottom:1.15rem">Connect with Leadership Lab ✨</h3>
+          <div class="fg"><label>Full Name *</label><input type="text" id="fn" placeholder="Your name"></div>
+          <div class="fg"><label>Email Address *</label><input type="email" id="fe" placeholder="you@school.edu"></div>
+          <div class="fg"><label>Role</label><select><option value="">Select your role</option><option>Elementary School Teacher</option><option>Middle School Teacher</option><option>High School Teacher</option><option>School Administrator</option><option>University Educator or Faculty</option><option>University Student Leader</option><option>Community Organization</option><option>Other</option></select></div>
+          <div class="fg"><label>State or Location</label><input type="text" placeholder="e.g. New Jersey, Texas, or National"></div>
+          <div class="fg"><label>I am interested in: (check all that apply)</label>
+            <div class="ckg">
+              <label class="cki"><input type="checkbox"> Receiving personalized emails on how to implement Leadership Lab in my class</label>
+              <label class="cki"><input type="checkbox"> Being listed for future Buccino Leadership Institute fundraising support and free materials</label>
+              <label class="cki"><input type="checkbox"> Starting a Leadership Lab chapter at my university or organization</label>
+              <label class="cki"><input type="checkbox"> Partnering with or volunteering alongside BLI</label>
+            </div>
+          </div>
+          <div class="fg"><label>Message (optional)</label><textarea placeholder="Tell us about your classroom, school, or how you would like to get involved..."></textarea></div>
+          <p style="font-size:.75rem;color:var(--muted);font-weight:600;margin-bottom:.9rem;line-height:1.55">Your information will be sent to the Leadership Lab team at the Buccino Leadership Institute. We use it only to send you relevant resources and updates about the program.</p>
+          <button class="fsub" onclick="submitForm()">Submit and Join the Community 🌟</button>
+        </div>
+        <div class="fsuccess" id="fsuccess">
+          <div class="bigcheck">🎉</div>
+          <h3>You are officially part of Leadership Lab!</h3>
+          <p>Thank you for joining our community. The Leadership Lab team at the Buccino Leadership Institute will be in touch soon with personalized resources and next steps. Together, we are building the next generation of leaders, one classroom at a time.</p>
+        </div>
+      </div>
+      <div class="cinfo">
+        <h3>Why sign up?</h3>
+        <p>Teachers who join our community get more than links. They get guidance tailored to their grade level, community context, and curriculum needs.</p>
+        <div class="cbenefit"><div class="cbico">📧</div><div><h5>Personalized Implementation Support</h5><p>Tips specific to your grade level and school context, not generic one-size-fits-all advice.</p></div></div>
+        <div class="cbenefit"><div class="cbico" style="background:var(--lav-light)">💰</div><div><h5>Future Fundraising Eligibility</h5><p>Registered teachers will be prioritized for Buccino Leadership Institute fundraising, potentially receiving physical leadership materials at no cost.</p></div></div>
+        <div class="cbenefit"><div class="cbico" style="background:var(--mint-light)">🏛️</div><div><h5>Chapter Launch Coaching</h5><p>Universities get direct coaching from BLI student leaders to set up their own Leadership Lab chapter from scratch.</p></div></div>
+        <div class="cbenefit"><div class="cbico" style="background:#FFF8E0">🌍</div><div><h5>National Educator Community</h5><p>Connect with educators across the country all committed to leadership education in underserved communities.</p></div></div>
+        <div class="affil-box">
+          <strong style="color:var(--navy);display:block;margin-bottom:.38rem">Affiliated with:</strong>
+          Buccino Leadership Institute 🏛️<br>
+          Seton Hall University, South Orange, NJ<br>
+          <span style="color:var(--rose)">Growing nationally, one classroom at a time.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="flogo">🌟 Leadership<span>Lab</span></div>
+  <div class="flinks">
+    <a href="#about">About</a>
+    <a href="#teachers">Teacher Toolkit</a>
+    <a href="#students">Student Zone</a>
+    <a href="#chapters">Start a Chapter</a>
+    <a href="#impact">Impact</a>
+    <a href="#contact">Join Us</a>
+  </div>
+  <p>Leadership Lab is an initiative of the Buccino Leadership Institute at Seton Hall University. Co-founded by Antonio Spano, Chandler Young, Angelina Farrag, Jai Balakanagaram, Iyana Torres, and Leslie Arriaza as part of the Six for Service project. All resources are free for educators.</p>
+  <p style="margin-top:.7rem;font-size:.7rem;color:rgba(255,255,255,.28)">2025 Leadership Lab, Buccino Leadership Institute at Seton Hall University. For educational use.</p>
+</footer>
+
+<!-- MODALS -->
+<div class="overlay" id="quiz-modal">
+  <div class="mbox">
+    <div class="mhead"><h3>🏆 Leadership Knowledge Quiz</h3><button class="mclose" onclick="document.getElementById('quiz-modal').classList.remove('open')">x</button></div>
+    <div id="quiz-content"></div>
+  </div>
+</div>
+
+<div class="overlay" id="color-modal">
+  <div class="mbox">
+    <div class="mhead"><h3>🎨 What Color Leader Are You?</h3><button class="mclose" onclick="document.getElementById('color-modal').classList.remove('open')">x</button></div>
+    <div id="color-content"></div>
+  </div>
+</div>
+
+<div class="overlay" id="game-modal">
+  <div class="gbox">
+    <div class="ghead">
+      <div><div class="gtitle">🧱 Leadership Block Blast!</div><div class="gsub">Answer correctly to blast a column of blocks! Wrong answer and no blocks fall.</div></div>
+      <button class="gclose" onclick="document.getElementById('game-modal').classList.remove('open')">x</button>
+    </div>
+    <div id="game-content"></div>
+  </div>
+</div>
+
+<script>
+/* ===== TAB / FILTER ===== */
+function switchTab(id,el){
+  document.querySelectorAll('.tpane').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  el.classList.add('active');
+}
+function filterCurr(cat,el){
+  document.querySelectorAll('.ctag').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('#curr-grid .rc').forEach(c=>{
+    c.style.display=(cat==='all'||(c.dataset.cat||'').includes(cat))?'':'none';
+  });
+}
+
+/* ===== FORM ===== */
+function submitForm(){
+  const n=document.getElementById('fn').value.trim();
+  const e=document.getElementById('fe').value.trim();
+  if(!n||!e){alert('Please enter your name and email!');return;}
+  document.getElementById('cfbody').style.display='none';
+  document.getElementById('fsuccess').style.display='block';
+}
+
+/* ===== KNOWLEDGE QUIZ ===== */
+const QD=[
+  {q:"Leadership is best described as:",opts:["Having the loudest voice","Influencing others toward a shared goal","Being assigned a title","Always having every answer"],ans:1,exp:"Leadership is defined by your actions and influence, not your title or volume!"},
+  {q:"Who is the First Follower in leadership?",opts:["The one who invents an idea","The first to support someone else's idea","The oldest team member","The most experienced person"],ans:1,exp:"The first follower is also a leader! They validate the idea and inspire others to join."},
+  {q:"Malala Yousafzai showed leadership by:",opts:["Winning a sports championship","Fighting for girls' education despite danger","Becoming the youngest CEO","Inventing new technology"],ans:1,exp:"Malala refused to back down from advocating for education, true courage and leadership!"},
+  {q:"A growth mindset means:",opts:["Talent is fixed at birth","Abilities grow with effort and learning","Only try what you are already good at","Avoid hard challenges"],ans:1,exp:"A growth mindset means believing your skills improve through dedication and hard work!"},
+  {q:"Leadership is defined by:",opts:["Your job title","Only what famous people do","Your daily actions and choices","Your social media following"],ans:2,exp:"Anyone can commit acts of leadership, standing up for a friend, helping a team, making good choices!"},
+  {q:"Self-reflection for leaders means:",opts:["Thinking about how great you are","Looking inward to identify ways to grow","Comparing yourself to others","Avoiding difficult situations"],ans:1,exp:"Great leaders always ask how can I do better. Self-awareness is one of the most powerful tools!"},
+  {q:"Emotional intelligence (EQ) means:",opts:["Being great at math","Understanding and managing emotions in yourself and others","Never showing emotion","Only caring about your own feelings"],ans:1,exp:"EQ helps leaders connect with others, handle conflict well, and create positive environments!"}
+];
+let qIdx=0,qScore=0,qAns=false;
+function openLeaderQuiz(){qIdx=0;qScore=0;document.getElementById('quiz-modal').classList.add('open');renderQ();}
+function renderQ(){
+  qAns=false;
+  if(qIdx>=QD.length){renderQScore();return;}
+  const q=QD[qIdx];
+  const dots=QD.map((_,i)=>`<div class="qdot ${i<qIdx?'done':i===qIdx?'curr':''}"></div>`).join('');
+  document.getElementById('quiz-content').innerHTML=`<div class="qdots">${dots}</div><div class="qq">Q${qIdx+1}. ${q.q}</div><div class="qopts">${q.opts.map((o,i)=>`<button class="qopt" onclick="ansQ(${i})">${o}</button>`).join('')}</div><div class="qfb" id="qfb"></div><button class="qnext" id="qnext" style="display:none" onclick="qIdx++;renderQ()">${qIdx+1<QD.length?'Next Question':'See My Score 🏆'}</button>`;
+}
+function ansQ(i){
+  if(qAns)return;qAns=true;
+  const q=QD[qIdx];
+  document.querySelectorAll('.qopt').forEach((b,idx)=>{b.disabled=true;if(idx===q.ans)b.classList.add('correct');else if(idx===i)b.classList.add('wrong');});
+  const fb=document.getElementById('qfb');
+  if(i===q.ans){qScore++;fb.className='qfb show correct';fb.textContent='Correct! '+q.exp;}
+  else{fb.className='qfb show wrong';fb.textContent='Not quite. '+q.exp;}
+  document.getElementById('qnext').style.display='block';
+}
+function renderQScore(){
+  const pct=Math.round((qScore/QD.length)*100);
+  const stars=pct>=85?'⭐⭐⭐':pct>=60?'⭐⭐':'⭐';
+  const msg=pct>=85?'You are a leadership superstar! 🌟':pct>=60?'Great effort, keep growing! 💪':'Every leader starts somewhere, keep going! 🌱';
+  document.getElementById('quiz-content').innerHTML=`<div class="qscore"><div class="qstars">${stars}</div><div class="bsc">${qScore}/${QD.length}</div><p style="margin:.5rem 0;color:var(--muted);font-weight:700">${pct}% - ${msg}</p><button class="qnext" style="margin-top:1.4rem" onclick="qIdx=0;qScore=0;renderQ()">Play Again 🔄</button></div>`;
+}
+
+/* ===== COLOR QUIZ ===== */
+const CQ=[
+  {q:"When your group has a problem, you usually:",opts:[{t:"Make a careful plan and list all the steps",c:"blue"},{t:"Cheer everyone up and keep the mood positive",c:"red"},{t:"Take charge and act quickly to fix it",c:"yellow"},{t:"Make sure everyone's feelings are considered first",c:"green"}]},
+  {q:"Your ideal school project looks like:",opts:[{t:"Organized, detailed, well-researched, and accurate",c:"blue"},{t:"Fun, creative, colorful, and exciting",c:"red"},{t:"Ambitious with a clear, impressive result",c:"yellow"},{t:"Team-based, fair for everyone, and collaborative",c:"green"}]},
+  {q:"When someone disagrees with you, you:",opts:[{t:"Calmly explain your reasoning with evidence",c:"blue"},{t:"Use humor to ease the tension and find compromise",c:"red"},{t:"Stand your ground and make your case confidently",c:"yellow"},{t:"Listen carefully first, then share your view gently",c:"green"}]},
+  {q:"Your friends would most describe you as:",opts:[{t:"Smart, thoughtful, and detail-oriented",c:"blue"},{t:"Fun, energetic, and always laughing",c:"red"},{t:"Confident, driven, and goal-focused",c:"yellow"},{t:"Warm, kind, and a really great listener",c:"green"}]},
+  {q:"You feel most proud when:",opts:[{t:"You solve a really hard problem correctly",c:"blue"},{t:"You made someone's whole day better",c:"red"},{t:"You achieve a big goal you worked hard for",c:"yellow"},{t:"You help someone through a difficult moment",c:"green"}]}
+];
+const CI={
+  blue:{emoji:"💙",name:"Blue: The Strategic Leader",trait:"Analytical and Detail-Oriented",desc:"You lead with logic, careful planning, and precision. You think things through before acting. Your superpower: seeing the full picture and creating systems that actually work. Famous blue leader: Nikola Tesla, the master of thinking before acting."},
+  green:{emoji:"💚",name:"Green: The Empathetic Leader",trait:"Caring and Compassionate",desc:"You lead with heart. People trust you because you genuinely listen and care. Your superpower: building real connections and making sure everyone feels included. Famous green leader: Malala Yousafzai, who fought for others even when it was dangerous."},
+  yellow:{emoji:"💛",name:"Yellow: The Decisive Leader",trait:"Confident and Action-Oriented",desc:"You lead with confidence and urgency. You love a challenge and thrive when things move fast. Your superpower: making bold decisions and inspiring others to push harder. Famous yellow leader: Usain Bolt, always setting the pace."},
+  red:{emoji:"❤️",name:"Red: The Inspiring Leader",trait:"Energetic and Enthusiastic",desc:"You lead with energy, excitement, and pure enthusiasm. You bring out the best in people around you. Your superpower: creating positive energy and keeping morale sky-high. Famous red leader: Michelle Obama, who inspired millions with warmth and joy."}
+};
+let cqIdx=0,cqT={blue:0,green:0,red:0,yellow:0};
+function openColorQuiz(){cqIdx=0;cqT={blue:0,green:0,red:0,yellow:0};document.getElementById('color-modal').classList.add('open');renderCQ();}
+function renderCQ(){
+  if(cqIdx>=CQ.length){renderCR();return;}
+  const q=CQ[cqIdx];
+  const pct=Math.round((cqIdx/CQ.length)*100);
+  document.getElementById('color-content').innerHTML=`<div class="cprog"><div class="cbar" style="width:${pct}%"></div></div><div class="cqnum">Question ${cqIdx+1} of ${CQ.length}</div><div class="cqq">${q.q}</div><div class="copts">${q.opts.map(o=>`<button class="copt o${o.c[0]}" onclick="pickC('${o.c}')">${o.t}</button>`).join('')}</div>`;
+}
+function pickC(c){cqT[c]++;cqIdx++;renderCQ();}
+function renderCR(){
+  const top=Object.keys(cqT).reduce((a,b)=>cqT[a]>cqT[b]?a:b);
+  const i=CI[top];
+  document.getElementById('color-content').innerHTML=`<div class="cresult"><div class="remoji">${i.emoji}</div><h3>${i.name}</h3><p style="font-size:.8rem;color:var(--rose);font-weight:900;margin:.28rem 0 .7rem">${i.trait}</p><p>${i.desc}</p><p style="font-size:.78rem;color:var(--muted);margin-top:.9rem;font-weight:600">Every leadership style has unique strengths, and great leaders often blend styles! 🌈</p><button class="qnext" style="margin-top:1.15rem" onclick="cqIdx=0;cqT={blue:0,green:0,red:0,yellow:0};renderCQ()">Retake Quiz 🔄</button></div>`;
+}
+
+/* ===== BLOCK BLAST (real falling-blocks style) ===== */
+const GQ=[
+  {q:"Leadership means:",opts:["Having a fancy title","Influencing others toward a shared goal","Being the tallest person","Talking the most"],ans:1},
+  {q:"The First Follower is:",opts:["The last to agree","The first to support someone else's idea","Always the team captain","The teacher"],ans:1},
+  {q:"A growth mindset means:",opts:["Talent is fixed forever","Effort and learning improve your abilities","Only gifted people can lead","Avoiding hard things"],ans:1},
+  {q:"Emotional intelligence means:",opts:["Being great at math","Understanding your emotions and others'","Never getting upset","Hiding how you feel"],ans:1},
+  {q:"Leadership is defined by:",opts:["Your title or rank","Your social media following","Your daily actions and choices","Your age"],ans:2},
+  {q:"Self-reflection helps leaders:",opts:["Brag about themselves","Identify areas to grow and improve","Avoid responsibility","Compare to others"],ans:1},
+  {q:"A great team leader:",opts:["Does all the work alone","Listens and collaborates with teammates","Takes all the credit","Ignores how others feel"],ans:1},
+  {q:"Healthy disagreement means:",opts:["Ignoring other views","Yelling louder","Listening then sharing your view respectfully","Giving up immediately"],ans:2}
+];
+
+/* Board: 8 columns x 7 rows. Each cell = color string or null */
+const COLS=8,ROWS=7;
+const BCOLS=['#FF85A1','#C3A8F0','#6EDABF','#74C7F0','#FFD166','#FFBF8C','#FF6B5B','#5BC88A','#F9607A','#A0D8F1'];
+let board=[],gIdx=0,gScore=0,gAns=false,fallingCol=null,fallingColor=null;
+
+function openGame(){
+  gIdx=0;gScore=0;gAns=false;
+  board=[];
+  for(let r=0;r<ROWS;r++){board.push([]);for(let c=0;c<COLS;c++)board[r].push(randColor());}
+  document.getElementById('game-modal').classList.add('open');
+  renderG();
+}
+
+function randColor(){return BCOLS[Math.floor(Math.random()*BCOLS.length)];}
+
+function renderG(){
+  gAns=false;fallingCol=null;fallingColor=null;
+  if(gIdx>=GQ.length){renderGOver();return;}
+  const q=GQ[gIdx];
+  const boardHTML=buildBoardHTML();
+  const ansHTML=q.opts.map((o,i)=>`<button class="gans" onclick="ansG(${i})">${o}</button>`).join('');
+  document.getElementById('game-content').innerHTML=`
+    <div class="gstats">
+      <div class="gst"><div class="gsl">Score</div><div class="gsv">${gScore}</div></div>
+      <div class="gst"><div class="gsl">Blocks Left</div><div class="gsv">${countBlocks()}</div></div>
+      <div class="gst"><div class="gsl">Q</div><div class="gsv">${gIdx+1}/${GQ.length}</div></div>
+    </div>
+    <div class="blast-board"><div class="blast-grid" id="bboard">${boardHTML}</div></div>
+    <div class="gqt">${q.q}</div>
+    <div class="gang">${ansHTML}</div>
+    <div class="gfb" id="gfb"></div>
+    <button class="gnext" id="gnext" style="display:none" onclick="gIdx++;renderG()">${gIdx+1<GQ.length?'Next Question':'See Final Score 🏆'}</button>
+  `;
+}
+
+function buildBoardHTML(){
+  let html='';
+  for(let r=0;r<ROWS;r++){
+    for(let c=0;c<COLS;c++){
+      const color=board[r][c];
+      if(color){html+=`<div class="gblock alive" style="background:${color};--gd:${(r*0.04+c*0.03).toFixed(2)}s" data-r="${r}" data-c="${c}"></div>`;}
+      else{html+=`<div class="gblock dead"></div>`;}
+    }
+  }
+  return html;
+}
+
+function countBlocks(){return board.flat().filter(Boolean).length;}
+
+function ansG(i){
+  if(gAns)return;gAns=true;
+  const q=GQ[gIdx];
+  document.querySelectorAll('.gans').forEach((b,idx)=>{b.disabled=true;if(idx===q.ans)b.classList.add('correct');else if(idx===i)b.classList.add('wrong');});
+  const fb=document.getElementById('gfb');
+  if(i===q.ans){
+    gScore+=10;
+    fb.className='gfb show correct';fb.textContent='💥 BLAST! +10 pts. Watch a column explode!';
+    blastRandomColumn();
+  } else {
+    fb.className='gfb show wrong';fb.textContent='Missed it! No blocks blasted this round.';
+    document.getElementById('gnext').style.display='block';
+  }
+}
+
+function blastRandomColumn(){
+  /* find columns that still have blocks */
+  const colsWithBlocks=[];
+  for(let c=0;c<COLS;c++){for(let r=0;r<ROWS;r++){if(board[r][c]){colsWithBlocks.push(c);break;}}}
+  if(colsWithBlocks.length===0){document.getElementById('gnext').style.display='block';return;}
+  const col=colsWithBlocks[Math.floor(Math.random()*colsWithBlocks.length)];
+  /* animate cells in that column then remove */
+  const cells=document.querySelectorAll(`#bboard .gblock.alive[data-c="${col}"]`);
+  let done=0;
+  cells.forEach((cell,idx)=>{
+    setTimeout(()=>{
+      cell.classList.add('popping');
+      setTimeout(()=>{
+        const r=parseInt(cell.dataset.r);
+        board[r][col]=null;
+        cell.classList.remove('alive','popping');
+        cell.classList.add('dead');
+        cell.style.background='transparent';
+        done++;
+        if(done===cells.length){
+          document.getElementById('gnext').style.display='block';
+          /* update block count */
+          document.querySelector('.gsv:nth-child(1)') && updateStats();
+        }
+      },350);
+    },idx*80);
+  });
+}
+
+function updateStats(){
+  const statEls=document.querySelectorAll('.gsv');
+  if(statEls[0]) statEls[0].textContent=gScore;
+  if(statEls[1]) statEls[1].textContent=countBlocks();
+}
+
+function renderGOver(){
+  const totalBlasted=COLS*ROWS-countBlocks();
+  const emoji=gScore>=60?'🏆':gScore>=30?'🌟':'💪';
+  const msg=gScore>=60?'Leadership Block Master!':gScore>=30?'Great game, keep growing!':'Every leader starts somewhere, try again!';
+  document.getElementById('game-content').innerHTML=`<div class="game-over-msg"><div style="font-size:3rem;margin-bottom:.45rem">${emoji}</div><div style="font-family:Nunito,sans-serif;font-size:2.4rem;font-weight:900;color:var(--gold)">${gScore} pts</div><p style="color:rgba(255,255,255,.75);margin:.45rem 0;font-weight:700">${totalBlasted} blocks blasted!</p><p style="color:rgba(255,255,255,.48);font-size:.82rem;font-weight:600">${msg}</p><button class="gnext" style="margin-top:1.4rem" onclick="resetAndPlay()">Play Again 🔄</button></div>`;
+}
+
+function resetAndPlay(){
+  gIdx=0;gScore=0;gAns=false;
+  board=[];
+  for(let r=0;r<ROWS;r++){board.push([]);for(let c=0;c<COLS;c++)board[r].push(randColor());}
+  renderG();
+}
+</script>
+</body>
+</html>
